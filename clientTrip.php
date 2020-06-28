@@ -21,47 +21,38 @@
                     $strada = $row['strada'];
                     $codPostal = $row['cod_postal'];
                     $numarPasaport = $row['numar_pasaport'];
-                    $expirarePasaport = $row['expirare_pasaport'];
-                    $id_numerFactura = $row['id_numerFactura'];
                 }
             }
 
-            if(isset($_GET['plata'])){
-                $cnpId = $_GET['plata'];
-                $sql = mysqli_query($link, "SELECT * FROM users");
-                while($row = mysqli_fetch_array($sql)) {
-                    $numeagent = $row['username'];
-                }
-            }
 
     ?>
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Form Components</h3>
+        <h3><i class="fa fa-angle-right"></i> </h3>
         <div class="row mt">
           <div class="col-lg-12">
             <div class="col-lg-12">
                 <div class="form-panel">
-                <h4 class="mb"><i class="fa fa-angle-right"></i> Form Elements</h4>
+                <h4 class="mb"><i class="fa fa-angle-right"></i> </h4>
                 <form class="form-horizontal style-form" action="submitForm.php" method="post">
                     <input type="hidden" name="id" value="<?php echo $cnpId; ?>">
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Nume agent</label>
                         <div class="col-sm-10">
-                            <label name="nume" class="col-form-label"><?php echo $numeagent; ?></label>
+                            <input name="numeAgent" value="<?php echo $_SESSION['username']; ?>" class="col-form-label" readonly></input>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">CNP</label>
                         <div class="col-sm-5">
-                            <label name="nume" class="col-form-label"><?php echo $cnp ?></label>
+                            <label name="cnp" class="col-form-label"><?php echo $cnp ?></label>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">nume complet</label>
                         <div class="col-sm-5">
-                            <label name="nume"><?php echo $nume . " ". $prenume ?></label>
+                            <label name="nume complet"><?php echo $nume . " ". $prenume ?></label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -71,29 +62,23 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">numar factura</label>
-                        <div class="col-sm-5">
-                            <input  name="numarFactura" value="<?php echo $id_numerFactura ?>"></input>
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Numar membri</label>
                         <div class="col-sm-5">
-                            <input type="text" name="numarMembri" value="" class="form-control">
+                            <input type="number" name="numarMembri" value="" class="form-control">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Numar zile</label>
                         <div class="col-sm-5">
-                            <input type="text" name="numarZile" value= "" class="form-control">
+                            <input type="number" name="numarZile" value= "" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Tipul cerințelor</label>
                         <div class="col-sm-5">
-                            <select id="cars" name="tipCaltorie">
-                                <option></option>
+                            <select id="cars" name="tipcerinte">
+                                <option>Selectati</option>
                                 <option>Pachet sosire + zbor + visa</option>
                                 <option>Pachet sosire + zbor</option>
                                 <option>Pachet sosire + visa</option>
@@ -109,7 +94,7 @@
                         <label class="col-sm-2 col-sm-2 control-label">tip de călătorie</label>
                         <div class="col-sm-5">
                             <select id="cars" name="tipCaltorie">
-                                <option></option>
+                                <option>Selectati</option>
                                 <option>Avion</option>
                                 <option>Vapor</option>
                                 <option>autocar</option>
@@ -120,7 +105,7 @@
                         <label class="col-sm-2 col-sm-2 control-label">Pachete</label>
                         <div class="col-sm-5">
                             <select id="cars" name="tipPachet">
-                                <option></option>
+                                <option>Selectati</option>
                                 <option>Family pack</option>
                                 <option>single pack</option>
                                 <option>Copule pack</option>
@@ -130,8 +115,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Status</label>
                         <div class="col-sm-5">
-                            <select id="cars" name="tipPachet">
-                                <option></option>
+                            <select id="cars" name="stare">
+                                <option>Selectati</option>
                                 <option>Confirmat</option>
                                 <option>Ne platit</option>
                                 <option>In progres</option>
@@ -143,44 +128,53 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Zbor</label>
                         <div class="col-sm-5">
-                            <input type="checkbox" name="numarZile" value= "" class="form-control">
+                            <input type="checkbox" name="zbor" value="Zbor" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Visa</label>
                         <div class="col-sm-5">
-                            <input type="checkbox" name="numarZile" value= "" class="form-control">
+                            <input type="checkbox" name="visa" value="Visa" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Asigurare</label>
                         <div class="col-sm-5">
-                            <input type="checkbox" name="numarZile" value= "" class="form-control">
+                            <input type="checkbox" name="asigurare" value="Asigurare" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Pachet sosire</label>
                         <div class="col-sm-5">
-                            <input type="checkbox" name="numarZile" value= "" class="form-control">
+                            <input type="checkbox" name="pachetSosire" value="Pachet sosire" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Destinatie</label>
                         <div class="col-sm-5">
-                            <input type="text" name="destinatie"  class="form-control">
+                        <select id="cars" name="destinatie">
+                        <option>Selectati</option>
+                        <?php
+                        $sql = mysqli_query($link, "SELECT * FROM apps_countries");
+                        while($row = mysqli_fetch_array($sql)) {
+                            $tara = $row['country_name'];
+                           echo '<option>'."$tara".'</option>';
+                        }
+                        ?>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Comentariu</label>
                         <div class="col-sm-5">
-                            <input type="textarea" name="destinatie"  class="form-control">
+                            <input type="textarea" name="comentariu"  class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label col-md-3">Update</label>
                       <div class="col-md-3 col-xs-11">
                         <div data-date-viewmode="years" data-date-format="yyyy-mm-dd" data-date="" class="input-append date dpYears">
-                          <input type="text" readonly="" name="dataPlecare" value="2020-05-14" size="16" class="form-control">
+                          <input type="text" readonly="" name="lastUpdate" value="2020-05-14" size="16" class="form-control">
                           <span class="input-group-btn add-on">
                             <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -223,7 +217,7 @@
                                 <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                 <div>
                                     <span class="btn btn-theme02 btn-file">
-                                    <span class="fileupload-new"><i class="fa fa-paperclip"></i>Select image</span>
+                                    <span class="fileupload-new"><i class="fa fa-paperclip"></i>Selectati imagine</span>
                                     <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
                                     <input type="file" name="pozaPasaport" class="default" />
                                     </span>
@@ -248,28 +242,28 @@
                     <h4 class="mb"><i class="fa fa-angle-right"></i>Informati despre calatorie</h4>
 
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Numer famili</label>
+                        <label class="col-sm-2 col-sm-2 control-label">Numer familie</label>
                         <div class="col-sm-5">
-                            <input type="text" name="avans" value="" class="form-control">
+                            <input type="text" name="numarFamilie" value="" class="form-control">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Numer persoane</label>
                         <div class="col-sm-5">
-                            <input type="text" name="avans" value="" class="form-control">
+                            <input type="text" name="numarPersoane" value="" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Adulti</label>
                         <div class="col-sm-5">
-                            <input type="text" name="avans" value="" class="form-control">
+                            <input type="text" name="adulti" value="" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Copii</label>
                         <div class="col-sm-5">
-                            <input type="text" name="avans" value="" class="form-control">
+                            <input type="text" name="copii" value="" class="form-control">
                         </div>
                     </div>
                     <button type="submit" name="invoice" class='btn btn-theme'>Factura</button>

@@ -55,60 +55,54 @@
                 </div>
                 <h4 class="mb"><i class="fa fa-angle-right"></i>Detali Adresa</h4>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Apartament</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Strada</label>
                   <div class="col-sm-10">
                     <input type="text" name="strada" class="form-control" required>
                   </div>
                 </div>
                 <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Apartament</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="apartament" class="form-control" required>
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Localitate/Sector</label>
                   <div class="col-sm-10">
-                    <input type="number" name="codPostal" class="form-control" required>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Oras</label>
-                  <div class="col-sm-10">
-                    <input type="number" name="numarPasaport" class="form-control" required>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tara</label>
-                  <div class="col-sm-10">
-                    <input type="number" name="numarPasaport" class="form-control" required>
+                    <input type="text" name="localitate" class="form-control" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Cod postal</label>
                   <div class="col-sm-10">
-                    <input type="datatime" name="expirarePasaport" class="form-control" required>
+                    <input type="datatime" name="codPostal" class="form-control" required>
                   </div>
                 </div>
                 <h4 class="mb"><i class="fa fa-angle-right"></i>Detali Documente</h4>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Numer pasaport</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Numar pasaport</label>
                   <div class="col-sm-10">
-                    <input type="datatime" name="expirarePasaport" class="form-control" required>
+                    <input type="number" name="numarPasaport" class="form-control" required>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Numer visa</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Numar visa</label>
                   <div class="col-sm-10">
-                    <input type="datatime" name="expirarePasaport" class="form-control" required>
+                    <input type="number" name="numerVisa" class="form-control" required>
                   </div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Atașa pasaport </label>
                   <div class="col-sm-10">
-                    <input type="datatime" name="expirarePasaport" class="form-control" required>
+                    <input type="datatime" name="pozaPasaport" class="form-control" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Atașa Visa </label>
                   <div class="col-sm-10">
-                    <input type="datatime" name="expirarePasaport" class="form-control" required>
+                    <input type="datatime" name="pozaViza" class="form-control" required>
                   </div>
-                </div>
+                </div> -->
                 <input type="submit" name="submit" class='btn btn-theme'></input>
               </form>
             </div>

@@ -62,9 +62,8 @@
                           echo "<td class='numeric'>{$row['strada']}</td>";
                           echo "<td class='numeric'>{$row['cod_postal']}</td>";
                           echo "<td class='numeric'>{$row['numar_pasaport']}</td>";
-                          echo "<td class='numeric'>{$row['expirare_pasaport']}</td>";
                           ?>
-                          <td><a href="clientTrip.php?plata=<?php echo $row['cnp']?>" class="btn btn-primary" ><?php echo $row['id_numerFactura'] ?></a></td>
+                          <td><a href="clientTrip.php?plata=<?php echo $row['cnp']?>" class="btn btn-primary" ></a></td>
                           <td><a href="editClient.php?edit=<?php echo $row['cnp']?>" class="btn btn-success">Edit</a></td>
                           <td><a href="deleteClient.php?delete=<?php echo $row['cnp']?>" class="btn btn-danger">Delete</a></td>
                           <?php
