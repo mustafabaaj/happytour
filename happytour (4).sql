@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 20, 2020 at 01:56 PM
+-- Generation Time: Jul 01, 2020 at 08:25 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.2.19
 
@@ -288,12 +288,37 @@ INSERT INTO `apps_countries` (`id`, `country_code`, `country_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cerinte`
+--
+
+CREATE TABLE `cerinte` (
+  `id_tipCalatorie` int(11) NOT NULL,
+  `tipCerinte` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `cerinte`
+--
+
+INSERT INTO `cerinte` (`id_tipCalatorie`, `tipCerinte`) VALUES
+(1, 'Pachet sosire + zbor + visa'),
+(2, 'Pachet sosire + zbor'),
+(3, 'Pachet sosire + visa'),
+(4, 'visa + zbor'),
+(5, 'Pachet sosire'),
+(6, 'zbor'),
+(7, 'visa'),
+(8, 'Group');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `clienti`
 --
 
 CREATE TABLE `clienti` (
   `id` int(11) NOT NULL,
-  `id_numerFactura` int(11) NOT NULL,
+  `id_agent` int(11) NOT NULL,
   `cnp` varchar(255) NOT NULL,
   `nume` varchar(255) NOT NULL,
   `prenume` varchar(255) NOT NULL,
@@ -301,18 +326,22 @@ CREATE TABLE `clienti` (
   `numer_telefon` varchar(15) NOT NULL,
   `oras` varchar(255) NOT NULL,
   `zi_nastere` datetime NOT NULL,
+  `apartament` varchar(255) NOT NULL,
+  `localitate` varchar(255) NOT NULL,
   `strada` varchar(50) NOT NULL,
   `cod_postal` int(50) NOT NULL,
   `numar_pasaport` varchar(255) NOT NULL,
-  `expirare_pasaport` datetime NOT NULL
+  `numarVisa` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `clienti`
 --
 
-INSERT INTO `clienti` (`id`, `id_numerFactura`, `cnp`, `nume`, `prenume`, `email`, `numer_telefon`, `oras`, `zi_nastere`, `strada`, `cod_postal`, `numar_pasaport`, `expirare_pasaport`) VALUES
-(6, 123, '1234567890', 'alex', 'bob', 'alex.bob@gmail.com', '0734828162 ', 'bucuresti', '1997-03-26 00:00:00', 'romexpo', 0, '123456', '2020-07-10 00:00:00');
+INSERT INTO `clienti` (`id`, `id_agent`, `cnp`, `nume`, `prenume`, `email`, `numer_telefon`, `oras`, `zi_nastere`, `apartament`, `localitate`, `strada`, `cod_postal`, `numar_pasaport`, `numarVisa`) VALUES
+(6, 0, '1234567890', 'alex', 'bob', 'alex.bob@gmail.com', '0734828162 ', 'bucuresti', '1997-03-26 00:00:00', '', '', 'romexpo', 0, '123456', '0'),
+(7, 1, '1980625430011', 'Baaj', 'Mustafa', 'mustaf.baaj1998@gmail.com', '123213 ', 'bucuresti', '2020-05-14 02:13:07', '25', 'sector 3', 'matei basarab', 0, '123123', '123123'),
+(8, 1, '19806254302312', 'test2', 'cozam', 'mustafa.baaj1998@gmail.com', '213123 ', 'asdasd', '2020-05-14 00:00:00', '25', 'Romania', 'matei basarab', 0, '253235', '124214');
 
 -- --------------------------------------------------------
 
@@ -322,29 +351,57 @@ INSERT INTO `clienti` (`id`, `id_numerFactura`, `cnp`, `nume`, `prenume`, `email
 
 CREATE TABLE `factura` (
   `id` int(11) NOT NULL,
-  `numarFactura` int(11) NOT NULL,
-  `numarMembri` int(100) NOT NULL,
-  `numarZile` int(100) NOT NULL,
+  `numeAgent` varchar(255) NOT NULL,
+  `numarMembri` int(11) NOT NULL,
+  `numarZile` int(11) NOT NULL,
+  `tipcerinte` varchar(255) NOT NULL,
   `tipCaltorie` varchar(255) NOT NULL,
   `tipPachet` varchar(255) NOT NULL,
+  `stare` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `zbor` varchar(255) NOT NULL,
+  `visa` varchar(255) NOT NULL,
+  `asigurare` varchar(255) NOT NULL,
+  `pachetSosire` varchar(255) NOT NULL,
   `destinatie` varchar(255) NOT NULL,
+  `comentariu` varchar(255) NOT NULL,
+  `lastUpdate` date NOT NULL,
   `dataPlecare` date NOT NULL,
   `dataSosire` date NOT NULL,
   `pozaPasaport` varchar(255) NOT NULL,
-  `avans` int(100) NOT NULL,
-  `totalPlata` int(100) NOT NULL
+  `avans` int(11) NOT NULL,
+  `totalPlata` int(11) NOT NULL,
+  `numarFamilie` int(11) NOT NULL,
+  `numarPersoane` int(11) NOT NULL,
+  `adulti` int(11) NOT NULL,
+  `copii` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `factura`
 --
 
-INSERT INTO `factura` (`id`, `numarFactura`, `numarMembri`, `numarZile`, `tipCaltorie`, `tipPachet`, `destinatie`, `dataPlecare`, `dataSosire`, `pozaPasaport`, `avans`, `totalPlata`) VALUES
-(2, 123, 3, 3, 'Avion', 'Family pack', 'bucuresti ', '2023-05-06', '2024-06-12', 'photo-1554629947-334ff61d85dc.jfif', 500, 1000),
-(3, 123, 3, 3, 'Avion', 'Family pack', 'bucuresti ', '2020-05-14', '2021-05-01', 'photo-1554629947-334ff61d85dc.jfif', 500, 1000),
-(4, 3, 3, 3, 'Avion', 'Family pack', 'bucuresti ', '2020-05-14', '2020-09-17', 'photo-1554629947-334ff61d85dc.jfif', 500, 1000),
-(5, 1234, 3, 3, 'Avion', 'Family pack', 'bucuresti ', '2020-05-14', '2020-05-01', 'photo-1554629947-334ff61d85dc.jfif', 500, 1000),
-(6, 1234, 3, 3, 'Avion', 'Family pack', 'bucuresti ', '2023-05-02', '2019-05-22', 'photo-1554629947-334ff61d85dc.jfif', 121, 1000);
+INSERT INTO `factura` (`id`, `numeAgent`, `numarMembri`, `numarZile`, `tipcerinte`, `tipCaltorie`, `tipPachet`, `stare`, `zbor`, `visa`, `asigurare`, `pachetSosire`, `destinatie`, `comentariu`, `lastUpdate`, `dataPlecare`, `dataSosire`, `pozaPasaport`, `avans`, `totalPlata`, `numarFamilie`, `numarPersoane`, `adulti`, `copii`) VALUES
+(1, 'andreea', 3, 12, 'Pachet sosire + zbor + visa', 'Avion', 'Family pack ', 'Ne platit', 'Zbor ', 'Visa', 'Asigurare', 'Pachet sosire', 'Albania', 'asdasdasd', '2020-05-14', '2020-05-14', '2021-06-01', '89488618_2667927523319968_9062663779501735936_n.jpg ', 500, 12121, 11, 111, 123, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tipcalatorie`
+--
+
+CREATE TABLE `tipcalatorie` (
+  `id_tipCalatorie` int(11) NOT NULL,
+  `tipCalatorie` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tipcalatorie`
+--
+
+INSERT INTO `tipcalatorie` (`id_tipCalatorie`, `tipCalatorie`) VALUES
+(1, 'Avion'),
+(2, 'Vapor'),
+(3, 'AutoCar');
 
 -- --------------------------------------------------------
 
@@ -398,7 +455,10 @@ INSERT INTO `users` (`id`, `username`, `password`, `create_at`) VALUES
 (1, 'mustafa', '$2y$10$EJkj35MTbMHvU6D9uB0T6OwcIPVH.YSvOHBLBPHGBTeGMVbXP7AQm', '2020-05-14 23:27:55'),
 (2, 'alex', '$2y$10$4TUA/1U1wHKMVUJyiTKMuuPvXTA2kmP2bE1Z2X50vm0gUIu04Yswy', '2020-05-20 02:54:22'),
 (3, 'mustafa.baaj', '$2y$10$GQ/3VGFuYhxo7LHWsrD81um/DHGiWf2zXDWwZTkFDDoRSNxa.8G0i', '2020-05-20 02:56:11'),
-(4, 'gigel', '$2y$10$7cbG0QFX5S64ruRcnOSPSuPSyLV5Sp4rujHGCZF64dZqp10M6ahha', '2020-05-20 13:35:15');
+(4, 'gigel', '$2y$10$7cbG0QFX5S64ruRcnOSPSuPSyLV5Sp4rujHGCZF64dZqp10M6ahha', '2020-05-20 13:35:15'),
+(5, 'boss', '$2y$10$wUJAGR7Aox8mOrWvB2zYMOFFVA0tRmWNcJTnC/2mYhgmxEleAALGO', '2020-06-26 20:51:25'),
+(6, 'andreea', '$2y$10$sEJpQnELWr4DkpDsYhaZ1usUNCL78yMHm.g6BQ9w7i9Cd0oLALs3C', '2020-06-26 20:52:44'),
+(7, 'abdo', '$2y$10$giCiIUMjB3a3jsscO8zq7uZFGPWqhH3QdiuobTAZCgBWMCCsMfyy.', '2020-06-30 15:40:45');
 
 --
 -- Indexes for dumped tables
@@ -411,18 +471,29 @@ ALTER TABLE `apps_countries`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `cerinte`
+--
+ALTER TABLE `cerinte`
+  ADD PRIMARY KEY (`id_tipCalatorie`);
+
+--
 -- Indexes for table `clienti`
 --
 ALTER TABLE `clienti`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `clienti_ibfk_1` (`id_numerFactura`);
+  ADD KEY `id_agent` (`id_agent`);
 
 --
 -- Indexes for table `factura`
 --
 ALTER TABLE `factura`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `numarFactura` (`numarFactura`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tipcalatorie`
+--
+ALTER TABLE `tipcalatorie`
+  ADD PRIMARY KEY (`id_tipCalatorie`);
 
 --
 -- Indexes for table `total_user`
@@ -448,16 +519,28 @@ ALTER TABLE `apps_countries`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
 
 --
+-- AUTO_INCREMENT for table `cerinte`
+--
+ALTER TABLE `cerinte`
+  MODIFY `id_tipCalatorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `clienti`
 --
 ALTER TABLE `clienti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tipcalatorie`
+--
+ALTER TABLE `tipcalatorie`
+  MODIFY `id_tipCalatorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `total_user`
@@ -469,7 +552,7 @@ ALTER TABLE `total_user`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
