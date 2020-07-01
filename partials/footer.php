@@ -76,25 +76,29 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
   </script>
-  <?php 
-    require_once "./config.php";
-    $sql = mysqli_query($link, "SELECT id FROM clienti");
-    $array = array();
-    while ($row = mysqli_fetch_array($sql)) {
-        $array[] = $row['id'];
-    }
-  echo 'var array = '.json_encode($array).';';
-  ?>
-    <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
+  <script>
+  var ajax = new XMLHttpRequest();
+  var method = "GET";
+  var url = "chartData.php";
+  var asynchronous = true;
+  var text;
+
+  ajax.open(method, url, asynchronous);
+
+  ajax.send();
+
+  ajax.onreadystatechange = function() {
+    if(this.readyState == 4 && this.status == 200) {
+      text = JSON.parse(this.responseText);
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: ['January', 'February', 'March', 'April', 'May', 'June','July', 'August', 'September', 'October', 'November', 'December'],
             datasets: [{
-                label: 'Numar-ul clientilor',
-                
-                data: <?php echo json_encode($array); ?>,
+                label: 'Numarul clientiilor',
+
+                data: [text[1],text[2], text[3], text[4], text[5], text[6], text[7], text[8], text[9], text[10], text[11], text[12]],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -137,6 +141,11 @@
         },
 
     });
+    }
+  }
+
+
+
 </script>
 </body>
 

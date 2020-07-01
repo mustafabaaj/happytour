@@ -18,11 +18,11 @@ require_once './partials/sideBar.php';
                   </div>
                   <h1><strong> Numer Clienti</strong></h1>
                   <?php
-                    $sql = mysqli_query($link, "SELECT id FROM clienti ORDER BY id DESC LIMIT 1");
-                      while($row = mysqli_fetch_array($sql)) {
-                      echo "<h2>{$row['id']}</h2>";
-                   }
+                    $sql = mysqli_query($link, "SELECT COUNT(*) as totalClienti FROM clienti");
+                    $data = mysqli_fetch_assoc($sql);
+                    $total = $data['totalClienti'];
                   ?>
+                  <h2><?php echo($total) ?></h2>
                 </div>
               </div>
               <div class="col-md-4 col-sm-4 mb">
@@ -30,7 +30,12 @@ require_once './partials/sideBar.php';
                   <div class="darkblue-header">
                     <h5 class="fa fa-money"></h5>
                     <h1><strong>Profit</strong></h1>
-                    <h2>25$</h2>
+                    <?php
+                      $sql = mysqli_query($link, "SELECT sum(totalPlata) as total from factura");
+                      $row = mysqli_fetch_assoc($sql);
+                      $sum = $row['total'];
+                    ?>
+                    <h2><?php echo($sum) ?> $</h2>
                   </div>
                 </div>
               </div>
