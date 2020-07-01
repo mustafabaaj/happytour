@@ -25,8 +25,7 @@
               <span>Pachete</span>
               </a>
             <ul class="sub">
-            <li><a href="adaugaClient.php">Adauga Pachete</a></li>
-              <li><a href="responsive_table.php">Lista pachete</a></li>
+            <li><a href="adaugaPachet.php">Adauga Pachete</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -41,10 +40,20 @@
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
+              <i class="fa fa-cogs"></i>
+              <span>Transport</span>
+              </a>
+            <ul class="sub">
+              <li><a href="ListaTransport.php">Lista Transport</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
               <i class="fa fa-book"></i>
-              <span>Plata</span>
+              <span>Raport</span>
               </a>
           </li>
+          
         </ul>
 
       </div>

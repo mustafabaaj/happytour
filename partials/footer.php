@@ -76,6 +76,15 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
   </script>
+  <?php 
+    require_once "./config.php";
+    $sql = mysqli_query($link, "SELECT id FROM clienti");
+    $array = array();
+    while ($row = mysqli_fetch_array($sql)) {
+        $array[] = $row['id'];
+    }
+  echo 'var array = '.json_encode($array).';';
+  ?>
     <script>
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -84,7 +93,8 @@
             labels: ['January', 'February', 'March', 'April', 'May', 'June','July', 'August', 'September', 'October', 'November', 'December'],
             datasets: [{
                 label: 'Numar-ul clientilor',
-                data: [10, 23, 31, 50, 2, 3,1, 22, 53, 35, 21, 31],
+                
+                data: <?php echo json_encode($array); ?>,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
