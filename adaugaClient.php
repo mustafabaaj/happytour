@@ -30,6 +30,16 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Sex</label>
+                    <div class="col-sm-10">
+                    <select name="gender" id="gender" class="form-control" required>
+                      <option value="male">male</option>
+                      <option value="female">female</option>
+                      <option value="others">others</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">email</label>
                   <div class="col-sm-10">
                     <input type="email" name="email" class="form-control" required>

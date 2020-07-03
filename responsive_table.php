@@ -36,11 +36,15 @@
                   </thead> -->
                   <thead>
                     <tr>
-                      <th>#</th>
-                      <th>Client ID</th>
+                      <th>id</th>
+                      <th>Cnp</th>
                       <th class="numeric">Nume</th>
+                      <th class="numeric">Prenume</th>
+                      <th class="numeric">Email</th>
                       <th class="numeric">Numar Telefon</th>
-                      <th class="numeric">Agent</th>
+                      <th class="numeric">Oras</th>
+                      <th class="numeric">Data Inscriere</th>
+                      <th class="numeric">Adresa</th>
                       <th class="numeric">Comentariu</th>
                       <th class="numeric">Status</th>
                       <th class="numeric">Edit</th>
@@ -52,6 +56,7 @@
                   $sql = mysqli_query($link, "SELECT * FROM clienti");
                     while($row = mysqli_fetch_array($sql)) {
                         echo "<tr>";
+                          echo "<td>{$row['id']}</td>";
                           echo "<td>{$row['cnp']}</td>";
                           echo "<td>{$row['nume']}</td>";
                           echo "<td class='numeric'>{$row['prenume']}</td>";
@@ -61,9 +66,8 @@
                           echo "<td class='numeric'>{$row['zi_nastere']}</td>";
                           echo "<td class='numeric'>{$row['strada']}</td>";
                           echo "<td class='numeric'>{$row['cod_postal']}</td>";
-                          echo "<td class='numeric'>{$row['numar_pasaport']}</td>";
                           ?>
-                          <td><a href="clientTrip.php?plata=<?php echo $row['cnp']?>" class="btn btn-primary" ></a></td>
+                          <td><a href="clientTrip.php?plata=<?php echo $row['cnp']?>" class="btn btn-primary" >Lead</a></td>
                           <td><a href="editClient.php?edit=<?php echo $row['cnp']?>" class="btn btn-success">Edit</a></td>
                           <td><a href="deleteClient.php?delete=<?php echo $row['cnp']?>" class="btn btn-danger">Delete</a></td>
                           <?php

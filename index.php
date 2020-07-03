@@ -45,6 +45,13 @@ require_once './partials/sideBar.php';
             <canvas id="myChart" style="height: 370px; width: 100%;"></canvas>
             <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
             </div>
+
+            <div class="custom-bar-chart">
+
+            <canvas id="myChart2" style="height: 370px; width: 100%;"></canvas>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+            </div>
           </div>
           <div class="col-lg-3 ds">
             <div class="panel terques-chart">

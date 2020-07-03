@@ -90,6 +90,7 @@
   ajax.onreadystatechange = function() {
     if(this.readyState == 4 && this.status == 200) {
       text = JSON.parse(this.responseText);
+      console.log(text);
       var ctx = document.getElementById('myChart').getContext('2d');
       var myChart = new Chart(ctx, {
         type: 'bar',
@@ -143,9 +144,67 @@
     });
     }
   }
+  
+  var ajax = new XMLHttpRequest();
+  var method = "GET";
+  var url = "genderData.php";
+  var asynchronous = true;
+  var text;
 
+  ajax.open(method, url, asynchronous);
 
+  ajax.send();
 
+  ajax.onreadystatechange = function() {
+ 
+    if(this.readyState == 4 && this.status == 200) {
+      text = JSON.parse(this.responseText);
+      console.log(text);
+      var ctx = document.getElementById('myChart2').getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Masculin','Feminin'],
+            datasets: [{
+                label: 'Numarul clientiilor',
+
+                data: [text[0],text[1]],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 2
+            }]
+        },
+        
+
+    });
+    }
+  }
 </script>
 </body>
 
