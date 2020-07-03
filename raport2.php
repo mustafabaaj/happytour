@@ -1,17 +1,5 @@
 <?php
-$server = "localhost";
-$user ="root";
-$pass="root";
-$dbname ="filter";
-
-$conn = mysqli_connect($server, $user,$pass,$dbname);
-
-if(!$conn){
-    die("Conection Faild!!." . mysqli_connect_error());
-
-}else{
-    echo "all good";
-}
+require_once("./config.php");
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +30,7 @@ if(!$conn){
 </nav>
     <div class="container">
         <h3 style="text-align: center; font-weight:bold;">php filter</h3>
-        <div class="row"> 
+        <div class="row">
         <form action="raport2.php" class="form-horizontal" method="POST">
             <div class="form-group">
                 <label class="col-lg-2 control-label">Name</label>
@@ -53,14 +41,14 @@ if(!$conn){
             <div class="form-group">
                 <label class="col-lg-2 control-label">Gender</label>
                 <div class="col-lg-4">
-                <input type="radio" class="form-control" name="gender" value="Male" >Male 
+                <input type="radio" class="form-control" name="gender" value="Male" >Male
                 <input type="radio" class="form-control" name="gender" value="Female" >Female
                 <input type="radio" class="form-control" name="gender" value="Other" >Other
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-lg-2 control-label">Gender</label>
+                <label class="col-lg-2 control-label">Course</label>
                 <div class="col-lg-4">
                 <select name="course" class="form-control">
                     <option>Select</option>
@@ -110,15 +98,18 @@ if(!$conn){
                 if(isset($_POST['submit'])){
 
                     $name = $_POST['name'];
-                    $gender = $_POST['gender'];
+                    $gender = "";
                     $course = $_POST['course'];
                     $from = $_POST['from_data'];
                     $to = $_POST['to_data'];
+                    $newDate = date("Y-m-d", strtotime($from));
+                    $toDate = date("Y-m-d", strtotime($to));
 
-                    if($name != "" || $gender != "" || $course != "" || $from != "" || $to != ""){
-                        $query = "SELECT * FROM records WHERE name = '$name' OR gender = '$gender' OR course = '$course' ";
-                        
-                        $data = mysqli_query($conn, $query);
+                    if($name != "" || $gender != "" || $course != "" || $newDate != "" || $to != ""){
+                        $query = "SELECT * FROM records WHERE name = '$name' OR gender = '$gender' OR course = '$course' OR
+                        from_date = '$newDate' AND to_date = '$toDate'";
+
+                        $data = mysqli_query($link, $query);
                         if(mysqli_num_rows($data) > 0){
                             while($row = mysqli_fetch_assoc($data)){
                                 $id = $row['id'];
@@ -128,7 +119,6 @@ if(!$conn){
                                 $email = $row['email'];
                                 $from = $row['from_date'];
                                 $to = $row['to_date'];
-                            }
                             ?>
                             <tr>
                                 <td><?php echo $id; ?></td>
@@ -140,6 +130,7 @@ if(!$conn){
                                 <td><?php echo $to; ?></td>
                              </tr>
                              <?php
+                             }
                         } else {
                             ?>
                             <tr>
@@ -148,9 +139,9 @@ if(!$conn){
                          <?php
                         }
                     }
-                } 
+                }
             ?>
-          
+
         </div>
         </tbody>
     </table>
