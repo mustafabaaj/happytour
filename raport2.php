@@ -98,16 +98,20 @@ require_once("./config.php");
                 if(isset($_POST['submit'])){
 
                     $name = $_POST['name'];
-                    $gender = "";
+                    if(isset($_POST['gender'])) {
+                        $gender = $_POST['gender'];
+                    } else {
+                        $gender = "";
+                    }
                     $course = $_POST['course'];
                     $from = $_POST['from_data'];
                     $to = $_POST['to_data'];
                     $newDate = date("Y-m-d", strtotime($from));
                     $toDate = date("Y-m-d", strtotime($to));
 
-                    if($name != "" || $gender != "" || $course != "" || $newDate != "" || $to != ""){
+                    if($name != "" || $gender != "" || $course != "" || $newDate != "" || $toDate!= ""){
                         $query = "SELECT * FROM records WHERE name = '$name' OR gender = '$gender' OR course = '$course' OR
-                        from_date = '$newDate' AND to_date = '$toDate'";
+                        from_date = '$newDate' OR to_date = '$toDate'";
 
                         $data = mysqli_query($link, $query);
                         if(mysqli_num_rows($data) > 0){
