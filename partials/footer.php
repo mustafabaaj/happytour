@@ -82,6 +82,7 @@
   var url = "chartData.php";
   var asynchronous = true;
   var text;
+  var array =[];
 
   ajax.open(method, url, asynchronous);
 
@@ -90,7 +91,13 @@
   ajax.onreadystatechange = function() {
     if(this.readyState == 4 && this.status == 200) {
       text = JSON.parse(this.responseText);
-      console.log(text);
+      for(let i = 0; i < 12 ; i++) {
+        if(text[i] == undefined) {
+          array[i] = 0;
+        } else {
+          array[i]= text[i];
+        }
+      }
       var ctx = document.getElementById('myChart').getContext('2d');
       var myChart = new Chart(ctx, {
         type: 'bar',
@@ -99,7 +106,8 @@
             datasets: [{
                 label: 'Numarul clientiilor',
 
-                data: [text[1],text[2], text[3], text[4], text[5], text[6], text[7], text[8], text[9], text[10], text[11], text[12]],
+                data:[array[0]["January"], array[1]["February"], array[2]["March"], array[3]["April"], array[4]["May"], array[5]["June"], array[6]["July"],
+                      array[7]["August"], array[8]["September"], array[9]["October"], array[10]["November"], array[11]["December"]] ,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -144,7 +152,7 @@
     });
     }
   }
-  
+
   var ajax = new XMLHttpRequest();
   var method = "GET";
   var url = "genderData.php";
@@ -156,7 +164,7 @@
   ajax.send();
 
   ajax.onreadystatechange = function() {
- 
+
     if(this.readyState == 4 && this.status == 200) {
       text = JSON.parse(this.responseText);
       console.log(text);
@@ -200,7 +208,7 @@
                 borderWidth: 2
             }]
         },
-        
+
 
     });
     }
