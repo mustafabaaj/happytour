@@ -35,22 +35,21 @@ require_once './partials/sideBar.php';
                       $row = mysqli_fetch_assoc($sql);
                       $sum = $row['total'];
                     ?>
-                    <h2><?php echo($sum) ?> $</h2>
+                    <h2><?php echo($sum) ?> Lei</h2>
                   </div>
                 </div>
               </div>
+              <div class="col-md-4 col-sm-4 mb">
+                <div class="custom-bar-chart">
+                  <canvas id="myChart2" "></canvas>
+                  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                </div>
             </div>
             <div class="custom-bar-chart">
 
             <canvas id="myChart" style="height: 370px; width: 100%;"></canvas>
             <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
             </div>
-
-            <div class="custom-bar-chart">
-
-            <canvas id="myChart2" style="height: 370px; width: 100%;"></canvas>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
             </div>
           </div>
           <div class="col-lg-3 ds">
@@ -67,17 +66,17 @@ require_once './partials/sideBar.php';
               </div>
             </div>
             <h4 class="centered mt">Clienti Noi</h4>
-            <div class="desc">
-              <div class="thumb">
-                <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-              </div>
-              <div class="details">
+            <div class="desc" style="text-align: center;">
+              
                 <p>
-                  <muted>Acum 7 ore</muted>
-                  <br/>
-                  <a href="#">Petre alex</a> <br/>
+                <?php
+                  $sql = mysqli_query($link, "SELECT * FROM clienti ORDER BY id DESC LIMIT 5");
+                  echo '<br/>';
+                    while($row = mysqli_fetch_array($sql)) {
+                     echo '<a href="#">' .$row['nume'] .'</a> <br/>';
+                    }
+                ?>
                 </p>
-              </div>
             </div>
             <div id="calendar" class="mb">
               <div class="panel green-panel no-margin">

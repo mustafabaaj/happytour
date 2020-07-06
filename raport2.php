@@ -31,7 +31,7 @@ require_once("./config.php");
     <div class="container">
         <h3 style="text-align: center; font-weight:bold;">php filter</h3>
         <div class="row">
-        <form action="raport2.php" class="form-horizontal" method="POST">
+        <form action="raport.php" class="form-horizontal" method="POST">
             <div class="form-group">
                 <label class="col-lg-2 control-label">Name</label>
                 <div class="col-lg-4">

@@ -11,7 +11,7 @@
               <h4><i class="fa fa-angle-right"></i> Responsive Table</h4>
               <section id="unseen">
                 <form class="form-horizontal style-form" action="submitForm.php" method="post">
-                  <input type="submit" name="export" value="CSV Export"/>
+                  <input type="submit" name="exportAgent" value="CSV Export"/>
                 </form>
                 <table class="table table-bordered table-striped table-condensed">
                   <thead>
@@ -30,8 +30,8 @@
                           echo "<td>{$row['id']}</td>";
                           echo "<td>{$row['username']}</td>";
                           ?>
-                          <td><a href="editClient.php?edit=<?php echo $row['cnp']?>" class="btn btn-success">Edit</a></td>
-                          <td><a href="deleteClient.php?delete=<?php echo $row['cnp']?>" class="btn btn-danger">Delete</a></td>
+                          <td><a href="editClient.php?edit=<?php echo $row['id']?>" class="btn btn-success">Edit</a></td>
+                          <td><a href="stergeAgent.php?delete=<?php echo $row['id']?>" class="btn btn-danger">Delete</a></td>
                           <?php
                           echo "</tr>";
                     }

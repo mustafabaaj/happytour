@@ -11,10 +11,8 @@
               <h4><i class="fa fa-angle-right"></i> Responsive Table</h4>
               <section id="unseen">
                 <form class="form-horizontal style-form" action="submitForm.php" method="post">
-                  <input type="submit" name="export" value="CSV Export"/>
+                  <input type="submit" name="export" value="CSV Export" class="btn btn-success"/>
                 </form>
-                <label>Search</label>
-                <input type="text">
                 <table class="table table-bordered table-striped table-condensed">
                   <!-- <thead>
                     <tr>

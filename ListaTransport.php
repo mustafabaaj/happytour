@@ -35,7 +35,7 @@
                           echo "<td>{$row['tipCalatorie']}</td>";
                           ?>
                           <td><button type="button" class="btn btn-success editbtn">Edit</button></td>
-                          <td><a href="deleteClient.php?delete=<?php echo $row['id_tipCalatorie']?>" class="btn btn-danger">Delete</a></td>
+                          <td><a href="stergeTransport.php?delete=<?php echo $row['id_tipCalatorie']?>" class="btn btn-danger">Delete</a></td>
                           <?php
                           echo "</tr>";
                     }

@@ -1,15 +1,3 @@
-   <footer class="site-footer">
-      <div class="text-center">
-        <p>
-          &copy; Copyrights <strong>Haoppy Tour</strong>. All Rights Reserved
-        </p>
-        <div class="credits">
-        </div>
-        <a href="form_component.html#" class="go-top">
-          <i class="fa fa-angle-up"></i>
-          </a>
-      </div>
-    </footer>
   </section>
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>

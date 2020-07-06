@@ -34,7 +34,6 @@
               <span>Agenti</span>
               </a>
             <ul class="sub">
-              <li><a href="agent.php">Adauga angajat</a></li>
               <li><a href="listaagenti.php">Lista angajati</a></li>
             </ul>
           </li>
@@ -48,7 +47,7 @@
             </ul>
           </li>
           <li class="sub-menu">
-            <a href="javascript:;">
+            <a href="raport2.php">
               <i class="fa fa-book"></i>
               <span>Raport</span>
               </a>

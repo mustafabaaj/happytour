@@ -111,16 +111,91 @@ if(isset($_POST['invoice']))
 }
 
 if(isset($_POST["export"])){
-   header('Content-Type: text/csv; charset=utf-8');
-   header('Content-Disposition: attachment; filename=clienti.csv');
-   $output = fopen("php://output","w");
-   fputcsv($output,array('cnp','nume','prenume','email', 'numer_telefon', 'oras' ,'zi_nastere', 'strada', 'cod_postal', 'numar_pasaport', 'expirare_pasaport','1','2','3'));
-   $query = "SELECT * FROM clienti";
-   $result = mysqli_query($link, $query);
-   while($row = mysqli_fetch_array($result)) {
-      fputcsv($output, $row);
-   }
-   fclose($output);
+ require_once "./config.php";
+ $query = "SELECT * FROM clienti";  
+ $result = mysqli_query($link, $query);  
+
+       $output = '';
+       if(isset($_POST["export"]))
+       {
+       
+        if(mysqli_num_rows($result) > 0)
+        {
+         $output .= '
+          <table class="table" bordered="1">  
+                           <tr>  
+                           <th>ID</th>
+                           <th>Cnp</th>
+                           <th>Nume</th>
+                           <th>Prenume</th>
+                           <th>Email</th>
+                           <th>Numar Telefon</th>
+                           <th>Oras</th>
+                           <th>Data Inscriere</th>
+                           <th>Adresa</th>
+                           <th>gender</th>
+                       
+                           </tr>
+         ';
+         while($row = mysqli_fetch_array($result))
+         {
+          $output .= '
+           <tr>  
+                                <td>'.$row["id"].'</td>  
+                                <td>'.$row["cnp"].'</td>  
+                                <td>'.$row["nume"].'</td>  
+                                <td>'.$row["prenume"].'</td>
+                                <td>'.$row["email"].'</td>  
+                                <td>'.$row["numer_telefon"].'</td>  
+                                <td>'.$row["oras"].'</td>  
+                                <td>'.$row["data_inregistrare"].'</td>  
+                                <td>'.$row["strada"].'</td>
+                                <td>'.$row["gender"].'</td>  
+                           </tr>
+          ';
+         }
+         $output .= '</table>';
+         header('Content-Type: application/xls');
+         header('Content-Disposition: attachment; filename=download.xls');
+         echo $output;
+        }
+       }
 }
+
+if(isset($_POST["exportAgent"])){
+   require_once "./config.php";
+   $query = "SELECT * FROM users";  
+   $result = mysqli_query($link, $query);  
+  
+         $output = '';
+         if(isset($_POST["exportAgent"]))
+         {
+         
+          if(mysqli_num_rows($result) > 0)
+          {
+           $output .= '
+            <table class="table" bordered="1">  
+                             <tr>  
+                             <th>ID</th>
+                             <th>Nume</th>
+                             </tr>
+           ';
+           while($row = mysqli_fetch_array($result))
+           {
+            $output .= '
+             <tr>  
+               <td>'.$row["id"].'</td>  
+               <td>'.$row["username"].'</td>  
+             </tr>
+            ';
+           }
+           $output .= '</table>';
+           header('Content-Type: application/xls');
+           header('Content-Disposition: attachment; filename=download.xls');
+           echo $output;
+          }
+         }
+  }
+
 
 ?>
