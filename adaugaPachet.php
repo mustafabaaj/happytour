@@ -5,11 +5,11 @@
     <?php require_once './partials/sideBar.php' ?>
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Form Components</h3>
+        <h3><i class="fa fa-angle-right"></i> Pachete</h3>
         <div class="row mt">
           <div class="col-lg-12">
             <div class="form-panel">
-              <h4 class="mb"><i class="fa fa-angle-right"></i> Form Elements</h4>
+              <h4 class="mb"><i class="fa fa-angle-right"></i> Adauga pachet</h4>
               <form class="form-horizontal style-form" action="submitForm.php" method="post">
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Pachet nou</label>

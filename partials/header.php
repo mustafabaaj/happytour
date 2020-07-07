@@ -18,6 +18,17 @@
   <link rel="stylesheet" type="text/css" href="lib/bootstrap-datetimepicker/datertimepicker.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="lib/chart-master/Chart.js"></script>
+  <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#from" ).datepicker();
+        } );
+        $( function() {
+            $( "#to" ).datepicker();
+        } );
+  </script>
+  </script>
 </head>
 <?php
   require_once "./config.php";

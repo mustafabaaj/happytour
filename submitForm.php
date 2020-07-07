@@ -178,6 +178,7 @@ if(isset($_POST["exportAgent"])){
                              <tr>  
                              <th>ID</th>
                              <th>Nume</th>
+                             <th>Data inregistrare</th>                             
                              </tr>
            ';
            while($row = mysqli_fetch_array($result))
@@ -186,6 +187,7 @@ if(isset($_POST["exportAgent"])){
              <tr>  
                <td>'.$row["id"].'</td>  
                <td>'.$row["username"].'</td>  
+               <td>'.$row["create_at"].'</td>  
              </tr>
             ';
            }

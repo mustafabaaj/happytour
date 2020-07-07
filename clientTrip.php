@@ -28,12 +28,12 @@
     ?>
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> </h3>
+        <h3><i class="fa fa-angle-right"></i> Factura</h3>
         <div class="row mt">
           <div class="col-lg-12">
             <div class="col-lg-12">
                 <div class="form-panel">
-                <h4 class="mb"><i class="fa fa-angle-right"></i> </h4>
+                <h4 class="mb"><i class="fa fa-angle-right">Factura</i> </h4>
                 <form class="form-horizontal style-form" action="submitForm.php" method="post">
                     <input type="hidden" name="id" value="<?php echo $cnpId; ?>">
                     <div class="form-group">
@@ -242,14 +242,14 @@
                     <h4 class="mb"><i class="fa fa-angle-right"></i>Informati despre calatorie</h4>
 
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Numer familie</label>
+                        <label class="col-sm-2 col-sm-2 control-label">Numar familie</label>
                         <div class="col-sm-5">
                             <input type="text" name="numarFamilie" value="" class="form-control">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Numer persoane</label>
+                        <label class="col-sm-2 col-sm-2 control-label">Numar persoane</label>
                         <div class="col-sm-5">
                             <input type="text" name="numarPersoane" value="" class="form-control">
                         </div>

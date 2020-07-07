@@ -16,7 +16,7 @@ require_once './partials/sideBar.php';
                   <div class="grey-header">
                     <h5 class="fa fa-user"></h5>
                   </div>
-                  <h1><strong> Numer Clienti</strong></h1>
+                  <h1><strong> Numar Clienti</strong></h1>
                   <?php
                     $sql = mysqli_query($link, "SELECT COUNT(*) as totalClienti FROM clienti");
                     $data = mysqli_fetch_assoc($sql);
