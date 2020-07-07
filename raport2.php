@@ -30,8 +30,8 @@ require_once './partials/sideBar.php';
             <div class="form-group">
                 <label class="col-lg-2 control-label">Gender</label>
                 <div class="col-lg-4">
-                <input type="radio" class="form-control" name="gender" value="Male" >Male
-                <input type="radio" class="form-control" name="gender" value="Female" >Female
+                <input type="radio" class="form-control" name="gender" value="male" >Male
+                <input type="radio" class="form-control" name="gender" value="female" >Female
                 </div>
             </div>
 
@@ -74,6 +74,7 @@ require_once './partials/sideBar.php';
                 if(isset($_POST['submit'])){
 
                     $name = $_POST['name'];
+                    $oras = $_POST['oras'];
                     if(isset($_POST['gender'])) {
                         $gender = $_POST['gender'];
                     } else {
@@ -85,8 +86,8 @@ require_once './partials/sideBar.php';
                     $newDate = date("Y-m-d", strtotime($from));
                     $toDate = date("Y-m-d", strtotime($to));
 
-                    if($name != "" || $gender != ""){
-                        $query = "SELECT * FROM clienti WHERE nume = '$name'";
+                    // if($name != ""){
+                        $query = "SELECT * FROM clienti WHERE nume = '$name' OR oras = '$oras' OR gender = '$gender' OR data_inregistrare ='$newDate' AND data_inregistrare <= '$toDate'";
 
                         $data = mysqli_query($link, $query);
                         if(mysqli_num_rows($data) > 0){
@@ -109,8 +110,8 @@ require_once './partials/sideBar.php';
                                 <td><?php echo $data_inregistrare; ?></td>
                              </tr>
                              <?php
-                             }
-                        } else {
+                            //  }
+                        // } else {
                             ?>
                             <tr>
                             <?php
