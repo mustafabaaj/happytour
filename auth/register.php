@@ -8,7 +8,7 @@ $username_err = $password_err = $confirm_password_err = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter a username.";
+        $username_err = "Va rog sa introduceti un nume";
     } else{
 
         $sql = "SELECT id FROM users WHERE username = ?";
@@ -22,12 +22,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(mysqli_stmt_execute($stmt)){
                 mysqli_stmt_store_result($stmt);
                 if(mysqli_stmt_num_rows($stmt) == 1){
-                    $username_err = "This username is already taken.";
+                    $username_err = "Numele acesta exista!";
                 } else{
                     $username = trim($_POST["username"]);
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "A aparut o eroare, va rog sa incercati mai tarziu !";
             }
 
             mysqli_stmt_close($stmt);
@@ -35,19 +35,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter a password.";
+        $password_err = "Va rog sa introduceti o parola";
     } elseif(strlen(trim($_POST["password"])) < 6){
-        $password_err = "Password must have atleast 6 characters.";
+        $password_err = "Parola trebuie sa fie minim 6 charactere";
     } else{
         $password = trim($_POST["password"]);
     }
 
     if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = "Please confirm password.";
+        $confirm_password_err = "Va rog confimati parola";
     } else{
         $confirm_password = trim($_POST["confirm_password"]);
         if(empty($password_err) && ($password != $confirm_password)){
-            $confirm_password_err = "Password did not match.";
+            $confirm_password_err = "Parola nu corespunde";
         }
     }
 
@@ -63,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 header("location: ./login.php");
             } else{
-                echo "Something went wrong. Please try again later.";
+                echo "A aparut o eroare, va rog sa incercati mai tarziu !";
             }
 
 
@@ -97,21 +97,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
     <div class="centered">
     <div style="border: 5px solid #F4A460; padding: 90px; border-radius: 25px;">
-        <h2>Sign Up</h2>
-        <p>Please fill this form to create an account.</p>
+        <h2>Inregistrare</h2>
+        <p>Va rog sa completati formularul de inregistrare.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Username</label>
+                <label>Nume</label>
                 <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
                 <span class="help-block"><?php echo $username_err; ?></span>
             </div>
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password</label>
+                <label>Parola</label>
                 <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
                 <span class="help-block"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                <label>Confirm Password</label>
+                <label>Confirmare parola</label>
                 <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
@@ -119,7 +119,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="submit" class="btn btn-primary" value="Submit">
                 <input type="reset" class="btn btn-default" value="Reset">
             </div>
-            <p>Already have an account? <a href="./auth/login.php">Login here</a>.</p>
+            <p>Aveti deja un cont <a href="./auth/login.php">Autentificativa aici</a>.</p>
         </form>
     </div>
     </div>

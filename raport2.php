@@ -147,3 +147,4 @@ require_once './partials/sideBar.php';
     </div>
 </body>
 </html>
+<?php require_once './partials/footer.php' ?>
