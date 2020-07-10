@@ -72,23 +72,24 @@ require_once './partials/sideBar.php';
             <tbody>
             <?php
                 if(isset($_POST['submit'])){
-
+                    $query = "";
                     $name = $_POST['name'];
                     $oras = $_POST['oras'];
                     if(isset($_POST['gender'])) {
                         $gender = $_POST['gender'];
                     } else {
-                        $gender = "";
+                        $gender = "null";
                     }
-                    // $course = $_POST['course'];
                     $from = $_POST['from_data'];
                     $to = $_POST['to_data'];
-                    $newDate = date("Y-m-d", strtotime($from));
-                    $toDate = date("Y-m-d", strtotime($to));
-
-                    // if($name != ""){
-                        $query = "SELECT * FROM clienti WHERE nume = '$name' OR oras = '$oras' OR gender = '$gender' OR data_inregistrare ='$newDate' AND data_inregistrare <= '$toDate'";
-
+                    $newDate = $from ? date("Y-m-d", strtotime($from)) : "" ;
+                    $toDate = $to ? date("Y-m-d", strtotime($to)) : "";
+                    if($name != "" || $oras != "" || $gender != "null" || $newDate != ""){
+                        $query = "SELECT * FROM clienti WHERE nume = '$name' OR oras = '$oras' OR gender = '$gender' OR
+                        data_inregistrare BETWEEN '$newDate' AND '$toDate'";
+                    } else {
+                        $query = "SELECT * FROM clienti";
+                    }
                         $data = mysqli_query($link, $query);
                         if(mysqli_num_rows($data) > 0){
                             while($row = mysqli_fetch_assoc($data)){
@@ -110,33 +111,11 @@ require_once './partials/sideBar.php';
                                 <td><?php echo $data_inregistrare; ?></td>
                              </tr>
                              <?php
-                            //  }
-                        // } else {
-                            ?>
-                            <tr>
-                            <?php
-                            $sql = mysqli_query($link, "SELECT * FROM clienti");
-                            while($row =  mysqli_fetch_array($sql)){
-                                $id = $row['id'];
-                                $nume = $row['nume'];
-                                $prenume = $row['prenume'];
-                                $email = $row['email'];
-                                $oras = $row['oras'];
-                                $gender = $row['gender'];
-                                $data_inregistrare = $row['data_inregistrare'];
-                                
-                            ?>
-                            <tr>
-                               
-                             </tr>
-                         </tr>
-                         <?php
+                             }
                             }
                         }
-                    }
-                }
             ?>
-            
+
 
         </div>
         </tbody>
