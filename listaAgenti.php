@@ -30,7 +30,7 @@
                           echo "<td>{$row['id']}</td>";
                           echo "<td>{$row['username']}</td>";
                           ?>
-                          <td><a href="editClient.php?edit=<?php echo $row['id']?>" class="btn btn-success">Edit</a></td>
+                          <td><button type="button" class="btn btn-success editbtn">Edit</button></td>
                           <td><a href="stergeAgent.php?delete=<?php echo $row['id']?>" class="btn btn-danger">Delete</a></td>
                           <?php
                           echo "</tr>";
@@ -45,4 +45,52 @@
       </section>
     </section>
 
+
+    <!--EDIT MODAL-->
+    <div class="modal fade" id="editAgent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Agent</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <form action="insert.php" method="post">
+          <input type="hidden" name="idAgent" id="idAgent">
+
+            <div class="form-group">
+              <label >Modifica nume agent</label>
+              <input type="text" name="numeAgent" class="form-control" id="numeAgent"  placeholder="Modifica Numele agentului">
+            </div>
+
+            <button type="submit" name="updateAgent" class="btn btn-primary">Submit</button>
+          </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <?php require_once './partials/footer.php' ?>
+
+    <script>
+    $(document).ready(function(){
+      $('.editbtn').on('click',function () {
+        $('#editAgent').modal('show');
+
+        $tr = $(this).closest('tr');
+
+        var data =$tr.children("td").map(function () {
+          return $(this).text();
+        }).get();
+
+        console.log(data);
+
+        $('#idAgent').val(data[0]);
+      });
+    })
+    </script>
