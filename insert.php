@@ -29,3 +29,34 @@ if(isset($_POST['updateAgent'])) {
         echo '<script> alert("Data NOT updated"); </script>';
     }
 }
+
+if(isset($_POST['savePachet'])) {
+    $pachet = $_POST['pachet'];
+    $query = "INSERT INTO cerinte (tipCerinte) VALUES ('$pachet')";
+
+    $result = mysqli_query($link, $query);
+
+    if($result) {
+        echo '<script> alert("Data Updated"); </script>';
+        header('Location: adaugaPachet.php');
+    } else {
+        echo '<script> alert("Data NOT updated"); </script>';
+    }
+}
+
+if(isset($_POST['updatePachet'])) {
+    $pachetName = $_POST['numePachet'];
+    $id = $_POST['idPachet'];
+
+    $query = "UPDATE cerinte SET tipCerinte = '$pachetName' WHERE id_tipCalatorie = $id";
+
+    $result = mysqli_query($link, $query);
+
+    if($result) {
+        echo '<script> alert("Data Updated"); </script>';
+        header('Location: adaugaPachet.php');
+    } else {
+        echo '<script> alert("Data NOT updated"); </script>';
+    }
+
+}
