@@ -91,6 +91,7 @@
         console.log(data);
 
         $('#idAgent').val(data[0]);
+        $("#numeAgent").val(data[1]);
       });
     })
     </script>

@@ -60,3 +60,19 @@ if(isset($_POST['updatePachet'])) {
     }
 
 }
+
+if(isset($_POST['editTransport'])) {
+    $nume = $_POST['numeTransport'];
+    $id = $_POST['idTransport'];
+
+    $query = "UPDATE tipcalatorie SET tipCalatorie = '$nume' WHERE id_tipCalatorie = $id";
+
+    $result = mysqli_query($link, $query);
+
+    if($result) {
+        echo '<script> alert("Data Updated"); </script>';
+        header('Location: ListaTransport.php');
+    } else {
+        echo '<script> alert("Data NOT updated"); </script>';
+    }
+}

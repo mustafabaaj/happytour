@@ -3,7 +3,7 @@
  session_start();
 ?>
     <?php require_once './partials/sideBar.php' ?>
-    
+
     <section id="main-content">
       <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Form Components</h3>
@@ -11,7 +11,7 @@
           <div class="col-lg-12">
             <div class="form-panel">
               <h4 class="mb"><i class="fa fa-angle-right"></i> Form Elements</h4>
-             
+
               <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listatransport">
               Adauga transport nou
@@ -87,14 +87,14 @@
           </div>
           <div class="modal-body">
           <form action="insert.php" method="post">
-          <input type="hidden" name="transport" id="tipCalatorie">
+          <input type="hidden" name="idTransport" id="tipCalatorie">
 
             <div class="form-group">
               <label >Adauga Transport</label>
-              <input type="text" name="transport" class="form-control" id="tipCalatorie"  placeholder="Modifica">
+              <input type="text" name="numeTransport" class="form-control" id="numeCalatorie"  placeholder="Modifica">
             </div>
-            
-            <button type="submit" name="updateData" class="btn btn-primary">Submit</button>
+
+            <button type="submit" name="editTransport" class="btn btn-primary">Submit</button>
           </form>
           </div>
           <div class="modal-footer">
@@ -121,6 +121,7 @@
         console.log(data);
 
         $('#tipCalatorie').val(data[0]);
+        $('#numeCalatorie').val(data[1]);
       });
     })
     </script>
