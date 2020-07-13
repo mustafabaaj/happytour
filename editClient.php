@@ -1,6 +1,5 @@
 <?php
  require_once './partials/header.php';
- session_start();
 ?>
     <?php require_once './partials/sideBar.php' ?>
     <?php
@@ -18,7 +17,6 @@
                 $strada = $row['strada'];
                 $codPostal = $row['cod_postal'];
                 $numarPasaport = $row['numar_pasaport'];
-                $expirarePasaport = $row['expirare_pasaport'];
             }
         }
     ?>

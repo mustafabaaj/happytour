@@ -6,9 +6,8 @@ require_once './partials/sideBar.php';
 
 
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar ">
         <div class="container-fluid">
-            <h3>Hfiltering</h3>
         </div>
 </nav>
     <div class="container">

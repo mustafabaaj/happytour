@@ -39,14 +39,14 @@ require_once './partials/sideBar.php';
                   </div>
                 </div>
               </div>
-              <div class="col-md-4 col-sm-4 mb">
+    
+            <div class="custom-bar-chart">
+            <div class="col-md-4 col-sm-4 mb">
                 <div class="custom-bar-chart">
                   <canvas id="myChart2" "></canvas>
                   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
                 </div>
             </div>
-            <div class="custom-bar-chart">
-
             <canvas id="myChart" style="height: 370px; width: 100%;"></canvas>
             <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
             </div>
@@ -56,12 +56,25 @@ require_once './partials/sideBar.php';
             <div class="panel terques-chart">
               <div class="panel-body">
                 <div class="chart">
-                  <div class="centered">
-                    <span>Analiza profit</span>
-                    <strong>890,00 lei</strong>
-                  </div>
-                  <br>
-                  <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,564,455]"></div>
+   
+               
+                  <?php
+                    require_once "./config.php";
+                    $sql = mysqli_query($link, "SELECT totalPlata FROM factura LIMIT 5");
+                    $array = array();
+                    $result =0;
+                    while ($row = mysqli_fetch_assoc($sql)) {
+                        $array[] =  intval($row['totalPlata']);
+                        $result += $row['totalPlata'];
+                      }
+                      echo  '<div class="centered">';
+                      echo  '<span>Analiza profit</span>';
+                      echo  '<strong> '.$result .'</strong>';
+                      echo  '</div>';
+                      echo  '<br>';
+                    echo '<div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="'.json_encode($array).'"></div>';
+
+                ?>
                 </div>
               </div>
             </div>

@@ -11,7 +11,7 @@ if(isset($_POST['saveData'])) {
     var_dump($result);
     if($result){
         echo '<script> alert("Data Saved"); </script>';
-        header('Location: index.php');
+        header('Location: ListaTransport.php');
     } else {
         echo '<script> alert("Data NOT  Saved"); </script>';
     }

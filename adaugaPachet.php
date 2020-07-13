@@ -1,6 +1,5 @@
 <?php
  require_once './partials/header.php';
- session_start();
 ?>
 <?php require_once './partials/sideBar.php' ?>
     <section id="main-content">
@@ -36,7 +35,7 @@
                           echo "<td>{$row['tipCerinte']}</td>";
                           ?>
                           <td><button type="button" class="btn btn-success editbtn">Edit</button></td>
-                          <td><a href="deleteClient.php?delete=<?php echo $row['tipCerinte']?>" class="btn btn-danger">Delete</a></td>
+                          <td><a href="stergePachet.php?delete=<?php echo $row['id_tipCalatorie']?>" class="btn btn-danger">Delete</a></td>
                           <?php
                           echo "</tr>";
                     }
@@ -120,6 +119,7 @@
         console.log(data);
 
         $('#idPachet').val(data[0]);
+        $('#numePachet').val(data[1]);
       });
     })
     </script>
