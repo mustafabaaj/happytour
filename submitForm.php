@@ -53,14 +53,17 @@ if (isset($_POST['update'])) {
    $prenume = $_POST['prenume'];
    $email = $_POST['email'];
    $numarTelefon = $_POST['numarTelefon'];
-   $oras = $_POST['oras'];
    $ziNastere = $_POST['ziNastere'];
+   $apartament = $_POST['apartament'];
+   $localitate = $_POST['localitate'];
+   $oras = $_POST['oras'];
    $strada = $_POST['strada'];
    $codPostal = $_POST['codPostal'];
    $numarPasaport = $_POST['numarPasaport'];
-   $expirarePasaport = $_POST['expirarePasaport'];
+   $numerVisa = $_POST['numerVisa'];
+   $gender = $_POST['gender'];
 
-   mysqli_query($link, "UPDATE clienti SET cnp='$cnp',nume='$nume' ,prenume='$prenume', email='$email', numer_telefon='$numarTelefon', oras='$oras' ,zi_nastere='$ziNastere', strada='$strada', cod_postal='$codPostal', numar_pasaport='$numarPasaport', expirare_pasaport='$expirarePasaport' WHERE cnp=$id");
+   mysqli_query($link, "UPDATE clienti SET cnp='$cnp',nume='$nume' ,prenume='$prenume', email='$email', numer_telefon='$numarTelefon', oras='$oras' ,zi_nastere='$ziNastere', apartament='$apartament', localitate='$localitate', strada='$strada', cod_postal='$codPostal', numar_pasaport='$numarPasaport', numarVisa='$numerVisa', gender='$gender' WHERE cnp=$id");
    if (mysqli_query($link, $sql)) {
       echo "Record updated successfully";
     } else {
@@ -94,13 +97,13 @@ if(isset($_POST['invoice']))
    $numarFamilie = $_POST['numarFamilie'];
    $adulti = $_POST['adulti'];
    $copii = $_POST['copii'];
-   // if($_POST['cnp'] !== '' && $_POST['nume'] !== '' && $_POST['prenume'] !== '' && $_POST['email'] !== '' && $_POST['numarTelefon'] !== '' && $_POST['oras'] !== '' && $_POST['ziNastere'] !== '' && $_POST['strada'] !== '' && $_POST['codPostal'] !== '' && $_POST['numarPasaport'] !== '' && $_POST['expirarePasaport'] !== ''){
+   if($_POST['cnp'] !== '' && $_POST['nume'] !== '' && $_POST['prenume'] !== '' && $_POST['email'] !== '' && $_POST['numarTelefon'] !== '' && $_POST['oras'] !== '' && $_POST['ziNastere'] !== '' && $_POST['strada'] !== '' && $_POST['codPostal'] !== '' && $_POST['numarPasaport'] !== '' && $_POST['expirarePasaport'] !== ''){
       $sql = "INSERT INTO factura (numeAgent,numarMembri,numarZile,tipcerinte, tipCaltorie, tipPachet, stare ,	zbor, visa, asigurare, pachetSosire,destinatie, comentariu, lastUpdate, dataPlecare, dataSosire, pozaPasaport, avans, totalPlata, numarFamilie, numarPersoane, adulti, copii)
       VALUES ('$numeAgent','$numarMembri','$numarZile','$tipcerinte','$tipCaltorie','$tipPachet ','$stare','$zbor ','$visa','$asigurare','$pachetSosire','$destinatie','$comentariu','$lastUpdate','$dataPlecare','$dataSosire','$pozaPasaport ','$avans','$totalPlata ','$numarFamilie','$numarPersoane','$adulti','$copii')";
-   // }else {
-   //    echo 'one filed is missing';
-   //    return;
-   // }
+   }else {
+      echo 'one filed is missing';
+      return;
+   }
       if (mysqli_query($link, $sql)) {
         echo "New record has been added successfully !";
         header("Location: ./adaugaClient.php");

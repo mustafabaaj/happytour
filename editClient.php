@@ -14,9 +14,14 @@
                 $numarTelefon = $row['numer_telefon'];
                 $oras = $row['oras'];
                 $ziNastere = $row['zi_nastere'];
+                $apartament = $row['apartament'];
+                $localitate = $row['localitate'];
                 $strada = $row['strada'];
                 $codPostal = $row['cod_postal'];
                 $numarPasaport = $row['numar_pasaport'];
+                $numerVisa = $row['numarVisa'];
+                $gender = $row['gender'];
+
             }
         }
     ?>
@@ -48,6 +53,16 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Sex</label>
+                    <div class="col-sm-10">
+                    <select name="gender" id="gender" class="form-control" required>
+                      <option value="male">male</option>
+                      <option value="female">female</option>
+                      <option value="others">others</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">email</label>
                   <div class="col-sm-10">
                     <input type="email" name="email" value= "<?php echo $email ?>" class="form-control" required>
@@ -56,7 +71,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">numar telefon</label>
                   <div class="col-sm-10">
-                    <input type="number" name="numarTelefon" value= "<?php echo $numarTelefon ?>" class="form-control" required>
+                    <input type="text" name="numarTelefon" value= "<?php echo $numarTelefon ?>" class="form-control" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -71,10 +86,23 @@
                     <input type="datatime" name="ziNastere" value= "<?php echo $ziNastere ?>" class="form-control" required>
                   </div>
                 </div>
+                <h4 class="mb"><i class="fa fa-angle-right"></i>Detali Adresa</h4>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">strada</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Strada</label>
                   <div class="col-sm-10">
                     <input type="text" name="strada" value= "<?php echo $strada ?>" class="form-control" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Apartament</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="apartament" value= "<?php echo $apartament ?>" class="form-control" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Localitate/Sector</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="localitate" value= "<?php echo $localitate ?>" class="form-control" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -83,16 +111,17 @@
                     <input type="number" name="codPostal" value= "<?php echo $codPostal ?>" class="form-control" required>
                   </div>
                 </div>
+                <h4 class="mb"><i class="fa fa-angle-right"></i>Detali Documente</h4>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">numar pasaport</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Numar pasaport</label>
                   <div class="col-sm-10">
                     <input type="number" name="numarPasaport" value= "<?php echo $numarPasaport ?>" class="form-control" required>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">expirare pasaport</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Numar visa</label>
                   <div class="col-sm-10">
-                    <input type="datatime" name="expirarePasaport" value= "<?php echo $expirarePasaport ?>" class="form-control" required>
+                    <input type="number" name="numerVisa" value= "<?php echo $numerVisa ?>" class="form-control" required>
                   </div>
                 </div>
                 <button type="submit" name="update" class='btn btn-theme'>Update</button>
