@@ -115,7 +115,7 @@ if(isset($_POST['invoice']))
 
 if(isset($_POST["export"])){
  require_once "./config.php";
- $query = "SELECT * FROM clienti";  
+ $query = "SELECT * FROM  ";  
  $result = mysqli_query($link, $query);  
 
        $output = '';
