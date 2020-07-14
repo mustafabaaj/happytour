@@ -77,15 +77,13 @@
                         <label class="col-sm-2 col-sm-2 control-label">Tipul cerințelor</label>
                         <div class="col-sm-5">
                             <select id="cars" name="tipcerinte">
-                                <option>Selectati</option>
-                                <option>Pachet sosire + zbor + visa</option>
-                                <option>Pachet sosire + zbor</option>
-                                <option>Pachet sosire + visa</option>
-                                <option>visa + zbor</option>
-                                <option>Pachet sosire</option>
-                                <option>zbor</option>
-                                <option>visa</option>
-                                <option>Group</option>
+                            <option>Selectati</option>
+                            <?php
+                                $sql = mysqli_query($link, "SELECT * FROM cerinte");
+                                    while($row = mysqli_fetch_array($sql)) {
+                                        echo "<option>{$row['tipCerinte']}</option>";
+                                    }
+                            ?>
                             </select>
                         </div>
                     </div>
@@ -93,9 +91,13 @@
                         <label class="col-sm-2 col-sm-2 control-label">tip de călătorie</label>
                         <div class="col-sm-5">
                             <select id="cars" name="tipCaltorie">
-                                <option>Selectati</option>
-                                <option>Avion</option>
-                                <option>Vapor</option>
+                            <option>Selectati</option>
+                            <?php
+                                $sql = mysqli_query($link, "SELECT * FROM tipcalatorie");
+                                    while($row = mysqli_fetch_array($sql)) {
+                                        echo "<option>{$row['tipCalatorie']}</option>";
+                                    }
+                                ?>
                                 <option>autocar</option>
                             </select>
                         </div>

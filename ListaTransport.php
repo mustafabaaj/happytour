@@ -5,14 +5,14 @@
 
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Form Components</h3>
+        <h3><i class="fa fa-angle-right"></i>Trasport</h3>
         <div class="row mt">
           <div class="col-lg-12">
             <div class="form-panel">
-              <h4 class="mb"><i class="fa fa-angle-right"></i> Form Elements</h4>
+              <h4 class="mb"><i class="fa fa-angle-right"></i> Lista Trasport</h4>
 
               <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listatransport">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listatransport" style="margin-bottom:20px">
               Adauga transport nou
             </button>
 

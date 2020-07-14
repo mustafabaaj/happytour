@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8">
   <title>Happy Tour</title>
-  <link href="img/favicon.png" rel="icon">
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />

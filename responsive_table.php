@@ -8,30 +8,12 @@
         <div class="row mt">
           <div class="col-lg-12">
             <div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i> Responsive Table</h4>
+              <h4><i class="fa fa-angle-right"></i>Lista clienti</h4>
               <section id="unseen">
-                <form class="form-horizontal style-form" action="submitForm.php" method="post">
+                <form class="form-horizontal style-form pull-right" style="margin-bottom:20px" action="submitForm.php" method="post">
                   <input type="submit" name="export" value="CSV Export" class="btn btn-success"/>
                 </form>
                 <table class="table table-bordered table-striped table-condensed">
-                  <!-- <thead>
-                    <tr>
-                      <th>cnp</th>
-                      <th>Nume</th>
-                      <th class="numeric">Prenume</th>
-                      <th class="numeric">Email</th>
-                      <th class="numeric">Numar Telefon</th>
-                      <th class="numeric">Oras</th>
-                      <th class="numeric">Zi De Nastere</th>
-                      <th class="numeric">Strada</th>
-                      <th class="numeric">Cod Postal</th>
-                      <th class="numeric">Numar pasaport</th>
-                      <th class="numeric">Expirare pasaport</th>
-                      <th class="numeric">Nr.Facuta</th>
-                      <th class="numeric">Edit</th>
-                      <th class="numeric">Delete</th>
-                    </tr>
-                  </thead> -->
                   <thead>
                     <tr>
                       <th>id</th>
@@ -66,8 +48,8 @@
                           echo "<td class='numeric'>{$row['cod_postal']}</td>";
                           ?>
                           <td><a href="clientTrip.php?plata=<?php echo $row['cnp']?>" class="btn btn-primary" >Lead</a></td>
-                          <td><a href="editClient.php?edit=<?php echo $row['cnp']?>" class="btn btn-success">Edit</a></td>
-                          <td><a href="deleteClient.php?delete=<?php echo $row['cnp']?>" class="btn btn-danger">Delete</a></td>
+                          <td><a href="editClient.php?edit=<?php echo $row['cnp']?>" class="btn btn-success">Modifica</a></td>
+                          <td><a href="deleteClient.php?delete=<?php echo $row['cnp']?>" class="btn btn-danger">Sterge</a></td>
                           <?php
                           echo "</tr>";
                     }

@@ -10,8 +10,8 @@
             <div class="content-panel">
               <h4><i class="fa fa-angle-right"></i> Responsive Table</h4>
               <section id="unseen">
-                <form class="form-horizontal style-form" action="submitForm.php" method="post">
-                  <input type="submit" name="exportAgent" value="CSV Export"/>
+                <form class="form-horizontal style-form pull-right" style="margin-bottom:20px"action="submitForm.php" method="post">
+                  <input type="submit" name="exportAgent" value="CSV Export"  class="btn btn-success"/>
                 </form>
                 <table class="table table-bordered table-striped table-condensed">
                   <thead>

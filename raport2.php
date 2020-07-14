@@ -11,7 +11,7 @@ require_once './partials/sideBar.php';
         </div>
 </nav>
     <div class="container">
-        <h3 style="text-align: center; font-weight:bold;">Filter Clienti</h3>
+        <h3 style="text-align: center; font-weight:bold;">Rapoarte Clienti</h3>
         <div class="row">
         <form action="raport2.php" class="form-horizontal" method="POST">
             <div class="form-group">

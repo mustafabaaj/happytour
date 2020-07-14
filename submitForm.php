@@ -26,8 +26,7 @@ if(isset($_POST['submit']))
      $numarPasaport = $_POST['numarPasaport'];
      $numerVisa = $_POST['numerVisa'];
      $gender = $_POST['gender'];
-   //   $pozaPasaport = $_POST['pozaPasaport'];
-   //   $pozaViza = $_POST['pozaViza'];
+
 
    if($_POST['cnp'] !== ''){
      $sql = "INSERT INTO clienti (id_agent ,cnp,nume,prenume, email, numer_telefon, oras ,zi_nastere,apartament ,localitate, strada, cod_postal, numar_pasaport, numarVisa, gender)
@@ -38,7 +37,7 @@ if(isset($_POST['submit']))
    }
      if (mysqli_query($link, $sql)) {
         echo "New record has been added successfully !";
-        header("Location: ./adaugaClient.php");
+        header("Location: ./succes.php");
      } else {
         echo "Error: " . $sql . ":-" . mysqli_error($link);
      }
@@ -115,7 +114,7 @@ if(isset($_POST['invoice']))
 
 if(isset($_POST["export"])){
  require_once "./config.php";
- $query = "SELECT * FROM  ";  
+ $query = "SELECT * FROM clienti";  
  $result = mysqli_query($link, $query);  
 
        $output = '';
