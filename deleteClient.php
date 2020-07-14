@@ -13,4 +13,16 @@ if(isset($_GET['delete'])){
 
    mysql_close($conn);
   }
+
+  if(isset($_GET['stergeFactura'])){
+    $cnpId = $_GET['stergeFactura'];
+    $sql = mysqli_query($link, "DELETE FROM factura WHERE id = $cnpId");
+    if(! $sql ) {
+      die('Nu a fost sters: ' . mysql_error());
+   }
+   echo "Deleted data successfully\n";
+   header("location: ./listaFacturi.php");
+
+   mysql_close($conn);
+  }
 ?>

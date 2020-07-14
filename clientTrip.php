@@ -98,7 +98,6 @@
                                         echo "<option>{$row['tipCalatorie']}</option>";
                                     }
                                 ?>
-                                <option>autocar</option>
                             </select>
                         </div>
                     </div>
@@ -222,7 +221,6 @@
                                     <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
                                     <input type="file" name="pozaPasaport" class="default" />
                                     </span>
-                                    <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
                                 </div>
                                 </div>
                             </div>

@@ -65,7 +65,7 @@
               <input type="text" name="pachet" class="form-control" id="exampleInputEmail1"
                   aria-describedby="emailHelp" placeholder="Adauga Pachet Nou">
             </div>
-            <button type="submit" name="editPachet" class="btn btn-primary">Submit</button>
+            <button type="submit" name="savePachet" class="btn btn-primary">Submit</button>
           </form>
           </div>
           <div class="modal-footer">

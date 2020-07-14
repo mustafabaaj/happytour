@@ -8,7 +8,7 @@ if(isset($_GET['delete'])){
       die('Nu a putut fii stearsa : ' . mysqli_error());
    }
    echo "Deleted data successfully\n";
-   header("location: ./ListaTransport.php");
+   header("location: ./adaugaPachet.php");
 
    mysql_close($conn);
   }

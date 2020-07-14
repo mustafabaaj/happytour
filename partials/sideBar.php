@@ -19,6 +19,7 @@
             <ul class="sub">
             <li><a href="adaugaClient.php">Adauga client</a></li>
               <li><a href="responsive_table.php">Lista clienti</a></li>
+              <li><a href="listaFacturi.php">Lista Facturi</a></li>
             </ul>
           </li>
           <li class="sub-menu">

@@ -164,6 +164,82 @@ if(isset($_POST["export"])){
        }
 }
 
+if(isset($_POST["exportFacturi"])){
+   require_once "./config.php";
+   $query = "SELECT * FROM factura";  
+   $result = mysqli_query($link, $query);  
+  
+         $output = '';
+         if(isset($_POST["exportFacturi"]))
+         {
+         
+          if(mysqli_num_rows($result) > 0)
+          {
+           $output .= '
+            <table class="table" bordered="1">  
+            <th>id</th>
+            <th>Nume Agent</th>
+            <th class="numeric">Numar Membri</th>
+            <th class="numeric">Numar Zile</th>
+            <th class="numeric">Tip Cerinta</th>
+            <th class="numeric">Tip Calatorie</th>
+            <th class="numeric">Tip Pachet</th>
+            <th class="numeric">Stare</th>
+            <th class="numeric">Zbor</th>
+            <th class="numeric">Visa</th>
+            <th class="numeric">Asigurare</th>
+            <th class="numeric">Pachet Sosire</th>
+            <th class="numeric">Destinatie</th>
+            <th class="numeric">Comentariu</th>
+            <th class="numeric">Ultima modificare</th>
+            <th class="numeric">Data Plecare</th>
+            <th class="numeric">Data Sosire</th>
+            <th class="numeric">Avans</th>
+            <th class="numeric">Total plata</th>
+            <th class="numeric">Numar familie</th>
+            <th class="numeric">Numar Persoane</th>
+            <th class="numeric">Adulti</th>
+            <th class="numeric">Copii</th>
+                            </tr>
+           ';
+           while($row = mysqli_fetch_array($result))
+           {
+            $output .= '
+             <tr>  
+                                  <td>'.$row["id"].'</td>  
+                                  <td>'.$row["numeAgent"].'</td>  
+                                  <td>'.$row["numarMembri"].'</td>  
+                                  <td>'.$row["numarZile"].'</td>
+                                  <td>'.$row["tipcerinte"].'</td>  
+                                  <td>'.$row["tipCaltorie"].'</td>  
+                                  <td>'.$row["tipPachet"].'</td>  
+                                  <td>'.$row["stare"].'</td>  
+                                  <td>'.$row["zbor"].'</td>
+                                  <td>'.$row["visa"].'</td>  
+                                  <td>'.$row["asigurare"].'</td>  
+                                  <td>'.$row["pachetSosire"].'</td>  
+                                  <td>'.$row["destinatie"].'</td>  
+                                  <td>'.$row["comentariu"].'</td>
+                                  <td>'.$row["lastUpdate"].'</td>  
+                                  <td>'.$row["dataPlecare"].'</td>  
+                                  <td>'.$row["oradataSosires"].'</td>  
+                                  <td>'.$row["avans"].'</td>  
+                                  <td>'.$row["totalPlata"].'</td>
+                                  <td>'.$row["numarFamilie"].'</td>  
+                                  <td>'.$row["numarPersoane"].'</td>  
+                                  <td>'.$row["adulti"].'</td>  
+                                  <td>'.$row["copii"].'</td>  
+                             </tr>
+            ';
+           }
+           $output .= '</table>';
+           header('Content-Type: application/xls');
+           header('Content-Disposition: attachment; filename=download.xls');
+           echo $output;
+          }
+         }
+  }
+
 if(isset($_POST["exportAgent"])){
    require_once "./config.php";
    $query = "SELECT * FROM users";  

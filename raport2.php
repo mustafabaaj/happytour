@@ -112,6 +112,33 @@ require_once './partials/sideBar.php';
                              <?php
                              }
                             }
+                        }else {
+                            $query = "SELECT * FROM clienti";
+                            $data = mysqli_query($link, $query);
+                            if(mysqli_num_rows($data) > 0){
+                                while($row = mysqli_fetch_assoc($data)){
+                                    $id = $row['id'];
+                                    $nume = $row['nume'];
+                                    $prenume = $row['prenume'];
+                                    $email = $row['email'];
+                                    $oras = $row['oras'];
+                                    $gender = $row['gender'];
+                                    $data_inregistrare = $row['data_inregistrare'];
+
+                                    ?>
+                                      <tr>
+                            <td><?php echo $id; ?></td>
+                                <td><?php echo $nume; ?></td>
+                                <td><?php echo $prenume; ?></td>
+                                <td><?php echo $email; ?></td>
+                                <td><?php echo $oras; ?></td>
+                                <td><?php echo $gender; ?></td>
+                                <td><?php echo $data_inregistrare; ?></td>
+                             </tr>
+                             <?php
+                                }
+                            }
+                            echo "Cautati";
                         }
             ?>
 

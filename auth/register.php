@@ -119,7 +119,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="submit" class="btn btn-primary" value="Submit">
                 <input type="reset" class="btn btn-default" value="Reset">
             </div>
-            <p>Aveti deja un cont <a href="./auth/login.php">Autentificativa aici</a>.</p>
+            <p>Aveti deja un cont <a href="./login.php">Autentificativa aici</a>.</p>
         </form>
     </div>
     </div>
